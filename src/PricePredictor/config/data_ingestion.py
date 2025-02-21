@@ -1,9 +1,9 @@
 import os
 import zipfile
 import gdown
-from cnnClassifier import logger
-from cnnClassifier.utils.common import get_size
-from cnnClassifier.entity.config_entity import DataIngestionConfig
+from PricePredictor import logger
+from PricePredictor.utils.common import get_size
+from PricePredictor.entity.config_entity import DataIngestionConfig
 
 
 class DataIngestion:
