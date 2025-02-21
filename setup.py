@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 __version__ = "0.0.0"
 
-REPO_NAME = "Chest-Cancer-Classification-Project"
+REPO_NAME = "MLOPS-Project"
 AUTHOR_USER_NAME = "Swaksy7781"
 SRC_REPO = "PricePredictor"
 AUTHOR_EMAIL = "saurabhwakaseseb159@gmail.com"
