@@ -2,7 +2,8 @@ import os
 from PricePredictor.constants import *
 from PricePredictor.utils.common import read_yaml, create_directories
 from PricePredictor.entity.config_entity import (DataIngestionConfig,
-                                                    MissingValueHandlingConfig) # Import MissingValueHandlingConfig
+                                                    MissingValueHandlingConfig,
+                                                    OutlierHandlingConfig) # Import OutlierHandlingConfig
 
 
 class ConfigurationManager:
@@ -33,7 +34,6 @@ class ConfigurationManager:
         return data_ingestion_config
 
 
-
     def get_missing_value_handling_config(self) -> MissingValueHandlingConfig: # New method
         config = self.config.missing_value_handling
 
@@ -49,3 +49,18 @@ class ConfigurationManager:
         )
 
         return missing_value_handling_config
+
+    def get_outlier_handling_config(self) -> OutlierHandlingConfig: # New method
+        config = self.config.outlier_handling
+
+        create_directories([config.root_dir,
+                           config.processed_data_dir])
+
+        outlier_handling_config = OutlierHandlingConfig(
+            root_dir=config.root_dir,
+            input_data_dir=config.input_data_dir,
+            processed_data_dir=config.processed_data_dir,
+            outlier_ids=config.outlier_ids
+        )
+
+        return outlier_handling_config
