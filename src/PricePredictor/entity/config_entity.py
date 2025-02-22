@@ -17,3 +17,12 @@ class MissingValueHandlingConfig:
     processed_data_dir: Path
     categorical_imputation: dict
     numerical_imputation: dict
+
+
+
+@dataclass(frozen=True)
+class OutlierHandlingConfig:
+    root_dir: Path
+    input_data_dir: Path
+    processed_data_dir: Path
+    outlier_id_list: list
