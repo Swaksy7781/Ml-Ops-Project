@@ -18,11 +18,9 @@ class MissingValueHandlingConfig:
     categorical_imputation: dict
     numerical_imputation: dict
 
-
-
 @dataclass(frozen=True)
-class OutlierHandlingConfig:
+class OutlierHandlingConfig: # New config entity
     root_dir: Path
     input_data_dir: Path
     processed_data_dir: Path
-    outlier_id_list: list
+    outlier_ids: list
