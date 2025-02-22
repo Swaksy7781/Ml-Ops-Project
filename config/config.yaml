@@ -1,18 +1,17 @@
 artifacts_root: artifacts
 
-
 data_ingestion:
   root_dir: artifacts/data_ingestion
-  source_URL: https://drive.google.com/file/d/1cvIiXwgPgCW3Kvf1YyQZ9-RMH_uXbYgj/view?usp=sharing
+  source_URL: https://drive.google.com/file/d/1uQU4uhJvYlvp2_SA-Xw-HcInvJXMjIrx/view?usp=sharing
   local_data_file: artifacts/data_ingestion/data.zip
   unzip_dir: artifacts/data_ingestion
 
 missing_value_handling:
   root_dir: artifacts/missing_value_handling
-  input_data_dir: artifacts/data_ingestion  # Path to ingested data
-  processed_data_dir: artifacts/missing_value_handling/processed_data # Path to save processed data
+  input_data_dir: artifacts/missing_value_handling/processed_data  # Input from missing value handling
+  processed_data_dir: artifacts/missing_value_handling/processed_data # Output will overwrite, or you can create new dir
   categorical_imputation:
-    no_imputation_features: # Features imputed with 'No'
+    no_imputation_features:
       - Alley
       - Fence
       - MasVnrType
@@ -24,15 +23,42 @@ missing_value_handling:
       - BsmtCond
       - BsmtExposure
       - BsmtQual
-    unf_imputation_features: # Features imputed with 'Unf'
+    unf_imputation_features:
       - BsmtFinType1
       - BsmtFinType2
-    most_frequent_imputation_features: # Features imputed with most frequent category
+    most_frequent_imputation_features:
       - Electrical
   numerical_imputation:
-    zero_imputation_features: # Features imputed with 0
+    zero_imputation_features:
       - MasVnrArea
       - LotFrontage
-    year_built_imputation_feature: # Feature imputed with 'YearBuilt'
+    year_built_imputation_feature:
       - GarageYrBlt
-    general_numerical_mean_imputation: True # Flag for general numerical mean imputation later
+    general_numerical_mean_imputation: True
+
+outlier_handling:
+  root_dir: artifacts/outlier_handling
+  input_data_dir: artifacts/missing_value_handling/processed_data # Input from missing value handling
+  processed_data_dir: artifacts/outlier_handling/processed_data # Directory for data after outlier removal
+  outlier_id_list: # List of outlier IDs to remove
+    - 598
+    - 955
+    - 935
+    - 1299
+    - 250
+    - 314
+    - 336
+    - 707
+    - 379
+    - 1183
+    - 692
+    - 186
+    - 441
+    - 524
+    - 739
+    - 636
+    - 1062
+    - 1191
+    - 496
+    - 198
+    - 1338
