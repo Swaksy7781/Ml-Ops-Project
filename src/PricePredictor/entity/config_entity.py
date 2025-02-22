@@ -24,3 +24,10 @@ class OutlierHandlingConfig: # New config entity
     input_data_dir: Path
     processed_data_dir: Path
     outlier_ids: list
+
+
+@dataclass(frozen=True)
+class FeatureEngineeringConfig: # New config entity
+    root_dir: Path
+    input_data_dir: Path
+    processed_data_dir: Path

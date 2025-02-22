@@ -3,7 +3,8 @@ from PricePredictor.constants import *
 from PricePredictor.utils.common import read_yaml, create_directories
 from PricePredictor.entity.config_entity import (DataIngestionConfig,
                                                     MissingValueHandlingConfig,
-                                                    OutlierHandlingConfig) # Import OutlierHandlingConfig
+                                                    OutlierHandlingConfig,
+                                                    FeatureEngineeringConfig) # Import OutlierHandlingConfig
 
 
 class ConfigurationManager:
@@ -64,3 +65,18 @@ class ConfigurationManager:
         )
 
         return outlier_handling_config
+
+
+    def get_feature_engineering_config(self) -> FeatureEngineeringConfig: # New method
+        config = self.config.feature_engineering
+
+        create_directories([config.root_dir,
+                            config.processed_data_dir])
+
+        feature_engineering_config = FeatureEngineeringConfig(
+            root_dir=config.root_dir,
+            input_data_dir=config.input_data_dir,
+            processed_data_dir=config.processed_data_dir
+        )
+
+        return feature_engineering_config

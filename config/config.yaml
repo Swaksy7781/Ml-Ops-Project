@@ -64,3 +64,11 @@ outlier_handling: # New section for outlier handling
     - 496
     - 198
     - 1338
+
+  
+feature_engineering: # New section for feature engineering
+  root_dir: artifacts/feature_engineering
+  input_data_dir: artifacts/outlier_handling/processed_data # Input from outlier handling
+  processed_data_dir: artifacts/feature_engineering/processed_data # Output directory
+
+
