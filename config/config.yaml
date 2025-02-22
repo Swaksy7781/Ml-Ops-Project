@@ -3,20 +3,36 @@ artifacts_root: artifacts
 
 data_ingestion:
   root_dir: artifacts/data_ingestion
-  source_URL: https://drive.google.com/file/d/1uQU4uhJvYlvp2_SA-Xw-HcInvJXMjIrx/view?usp=sharing
+  source_URL: https://drive.google.com/file/d/1cvIiXwgPgCW3Kvf1YyQZ9-RMH_uXbYgj/view?usp=sharing
   local_data_file: artifacts/data_ingestion/data.zip
   unzip_dir: artifacts/data_ingestion
 
-
-
-# prepare_base_model:
-#   root_dir: artifacts/prepare_base_model
-#   base_model_path: artifacts/prepare_base_model/base_model.h5
-#   updated_base_model_path: artifacts/prepare_base_model/base_model_updated.h5
-
-
-
-
-# training:
-#   root_dir: artifacts/training
-#   trained_model_path: artifacts/training/model.h5
+missing_value_handling:
+  root_dir: artifacts/missing_value_handling
+  input_data_dir: artifacts/data_ingestion  # Path to ingested data
+  processed_data_dir: artifacts/missing_value_handling/processed_data # Path to save processed data
+  categorical_imputation:
+    no_imputation_features: # Features imputed with 'No'
+      - Alley
+      - Fence
+      - MasVnrType
+      - FireplaceQu
+      - GarageCond
+      - GarageType
+      - GarageFinish
+      - GarageQual
+      - BsmtCond
+      - BsmtExposure
+      - BsmtQual
+    unf_imputation_features: # Features imputed with 'Unf'
+      - BsmtFinType1
+      - BsmtFinType2
+    most_frequent_imputation_features: # Features imputed with most frequent category
+      - Electrical
+  numerical_imputation:
+    zero_imputation_features: # Features imputed with 0
+      - MasVnrArea
+      - LotFrontage
+    year_built_imputation_feature: # Feature imputed with 'YearBuilt'
+      - GarageYrBlt
+    general_numerical_mean_imputation: True # Flag for general numerical mean imputation later

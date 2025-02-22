@@ -8,3 +8,12 @@ class DataIngestionConfig:
     source_URL: str
     local_data_file: Path
     unzip_dir: Path
+
+
+@dataclass(frozen=True)
+class MissingValueHandlingConfig:
+    root_dir: Path
+    input_data_dir: Path
+    processed_data_dir: Path
+    categorical_imputation: dict
+    numerical_imputation: dict
